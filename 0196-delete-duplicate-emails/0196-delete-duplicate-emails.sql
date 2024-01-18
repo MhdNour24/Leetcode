@@ -1,6 +1,3 @@
-DELETE FROM PERSON
-Where id in (select id from(
-SELECT id, 
-	email, 
-    ROW_NUMBER() OVER (PARTITION BY email ORDER BY id) rw  
-FROM PERSON ) c where c.rw > 1)
+DELETE t1
+FROM Person  t1
+JOIN Person  t2 ON t1.email = t2.email AND t1.id > t2.id;
