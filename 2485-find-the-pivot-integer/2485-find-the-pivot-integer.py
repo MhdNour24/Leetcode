@@ -1,8 +1,10 @@
 class Solution:
-    def toplam(self,num):
-        return int(num*(num+1)/2)
     def pivotInteger(self, n: int) -> int:
-        for i in range(n+1):
-            if self.toplam(i)==self.toplam(n)-self.toplam(i-1):
-                return i
+        if n==1:
+            return 1
+        toplam=int(n*(n+1)/2)
+        for i in range(1,n):
+            k=int(i*(i+1)/2)
+            if k == toplam-k+i:
+                return i 
         return -1
