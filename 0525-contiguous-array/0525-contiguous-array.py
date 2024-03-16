@@ -1,18 +1,18 @@
 class Solution:
     def findMaxLength(self, nums: List[int]) -> int:
-        n=len(nums)
-        hash_table={0:-1}
-        toplam=0
-        enb=0
-        for i in range(n):
+        max_length=0
+        len_nums=len(nums)
+        dic={0:-1}
+        sum_nums=0
+        for i in range(len_nums):
             if nums[i]==1:
-                toplam+=1
+                sum_nums+=1
             else:
-                toplam-=1
-            try:
-                k=i-hash_table[toplam]
-                if k>enb:
-                    enb=k
-            except:
-                hash_table[toplam]=i
-        return enb
+                sum_nums-=1
+
+            if sum_nums not in dic:
+                dic[sum_nums]=i
+            else:
+                max_length=max(max_length,i-dic[sum_nums])
+
+        return max_length
